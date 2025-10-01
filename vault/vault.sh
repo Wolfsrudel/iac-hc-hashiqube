@@ -320,6 +320,13 @@ echo -e '\e[38;5;198m'"++++ "
 echo exit | sudo -H -u ubuntu ssh -v -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /home/ubuntu/.ssh/id_rsa-cert.pub -i /home/ubuntu/.ssh/id_rsa ubuntu@localhost || true
 echo $?
 
+echo -e '\e[38;5;198m'"++++ "
+echo -e '\e[38;5;198m'"++++ Access Vault"
+echo -e '\e[38;5;198m'"++++ "
+echo -e '\e[38;5;198m'"++++ Vault Initial Root Token: ${VAULT_TOKEN}"
+echo -e '\e[38;5;198m'"++++ Vault http://localhost:8200/ui and enter the Root Token displayed above"
+echo -e '\e[38;5;198m'"++++ Vault Documentation http://localhost:3333/#/vault/README?id=vault"
+
 # https://www.vaultproject.io/docs/secrets/ssh/dynamic-ssh-keys
 #sudo apt-get -y install pwgen
 #sudo useradd -m -p $(openssl passwd -1 $(pwgen)) -s /bin/bash ubuntu

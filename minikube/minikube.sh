@@ -117,24 +117,24 @@ function minikube-install() {
   echo -e '\e[38;5;198m'"++++ "
   sudo --preserve-env=PATH -u vagrant minikube addons enable ingress
 
-  # Docker Registry via Minikube
-  # https://minikube.sigs.k8s.io/docs/handbook/registry/
-  echo -e '\e[38;5;198m'"++++ "
-  echo -e '\e[38;5;198m'"++++ Enable Minikube Docker Registry Addon"
-  echo -e '\e[38;5;198m'"++++ "
-  sudo --preserve-env=PATH -u vagrant minikube addons enable registry
-  sleep 30;
+  # # Docker Registry via Minikube
+  # # https://minikube.sigs.k8s.io/docs/handbook/registry/
+  # echo -e '\e[38;5;198m'"++++ "
+  # echo -e '\e[38;5;198m'"++++ Enable Minikube Docker Registry Addon"
+  # echo -e '\e[38;5;198m'"++++ "
+  # sudo --preserve-env=PATH -u vagrant minikube addons enable registry
+  # sleep 30;
 
-  attempts=0
-  max_attempts=15
-  while ! ( sudo netstat -nlp | grep 5001 ) && (( $attempts < $max_attempts )); do
-    attempts=$((attempts+1))
-    sleep 10;
-    echo -e '\e[38;5;198m'"++++ "
-    echo -e '\e[38;5;198m'"++++ kubectl port-forward -n kube-system service/registry 5001:80 --address=\"0.0.0.0\", (${attempts}/${max_attempts}) sleep 10s"
-    echo -e '\e[38;5;198m'"++++ "
-    sudo --preserve-env=PATH -u vagrant kubectl port-forward -n kube-system service/registry 5001:80 --address="0.0.0.0" > /dev/null 2>&1 &
-  done
+  # attempts=0
+  # max_attempts=15
+  # while ! ( sudo netstat -nlp | grep 5001 ) && (( $attempts < $max_attempts )); do
+  #   attempts=$((attempts+1))
+  #   sleep 10;
+  #   echo -e '\e[38;5;198m'"++++ "
+  #   echo -e '\e[38;5;198m'"++++ kubectl port-forward -n kube-system service/registry 5001:80 --address=\"0.0.0.0\", (${attempts}/${max_attempts}) sleep 10s"
+  #   echo -e '\e[38;5;198m'"++++ "
+  #   sudo --preserve-env=PATH -u vagrant kubectl port-forward -n kube-system service/registry 5001:80 --address="0.0.0.0" > /dev/null 2>&1 &
+  # done
 
   echo -e '\e[38;5;198m'"++++ "
   echo -e '\e[38;5;198m'"++++ Enable Minikube Default Storage Class Addon"
